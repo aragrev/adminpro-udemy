@@ -51,7 +51,7 @@ export class UsuarioService {
     const url = `${URL_SERVICIOS}/login/google`;
     return this.http.post(url, {token})
     .pipe(map((resp: any) => {
-      console.log(resp);
+      // console.log(resp);
       this.guardarStorage(resp.id, resp.token, resp.usuario);
       return true;
     }));
@@ -92,8 +92,10 @@ export class UsuarioService {
     const url = `${URL_SERVICIOS}/usuario/${usuario._id}?token=${this.token}`;
     return this.http.put(url, usuario)
     .pipe(map((resp: any) => {
+      if (usuario._id === this.usuario._id) {
+        this.guardarStorage(resp.usuario._id, this.token, resp.usuario);
+      }
       swal('Usuario actualizado', usuario.nombre, 'success');
-      this.guardarStorage(resp.usuario._id, this.token, resp.usuario);
       return true;
     }));
   }
@@ -109,4 +111,31 @@ export class UsuarioService {
       console.log(resp);
     });
   }
+
+  cargarUsuarios(desde: number = 0) {
+    const url = `${URL_SERVICIOS}/usuario?desde=${desde}`;
+    return this.http.get(url);
+  }
+
+  buscarUsuarios(termino: string) {
+    const url = `${URL_SERVICIOS}/busqueda/coleccion/usuarios/${termino}`;
+    return this.http.get(url);
+
+  }
+
+  eliminarUsuario(id: string) {
+    const url = `${URL_SERVICIOS}/usuario/${id}?token=${this.token}`;
+    return this.http.delete(url);
+  }
+
+  // buscarUsuarios(termino: string, collection: string = 'todo', tipo?: string) {
+  //   let url: string;
+  //   if (tipo) {
+  //     url = `${URL_SERVICIOS}/busqueda/${collection}/${tipo}/${termino}`;
+  //   } else {
+  //     url = `${URL_SERVICIOS}/busqueda/${collection}/${termino}`;
+  //   }
+  //   return this.http.get(url);
+
+  // }
 }

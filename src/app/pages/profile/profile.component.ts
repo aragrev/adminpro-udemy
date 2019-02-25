@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
 
   usuario: Usuario;
   imagenSubir: File;
-  imagenTemp: string;
+  imagenTemp: string | ArrayBuffer;
 
   constructor(
     public usuarioService: UsuarioService
@@ -33,7 +33,7 @@ export class ProfileComponent implements OnInit {
   }
 
   seleccionImagen(archivo: File) {
-    console.log(archivo);
+    // console.log(archivo);
     if (!archivo) {
       this.imagenSubir = null;
       return;
