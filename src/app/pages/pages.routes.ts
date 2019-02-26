@@ -8,7 +8,10 @@ import { AccountSettingsComponent } from '../components/account-settings/account
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { ProfileComponent } from '../pages/profile/profile.component';
+import { MedicoComponent } from './medicos/medico.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { HospitalesComponent } from './hospitales/hospitales.component';
+import { MedicosComponent } from './medicos/medicos.component';
 // Service guard
 import { LoginGuardGuard } from '../services/service.index';
 
@@ -26,8 +29,11 @@ const pagesRoutes: Routes = [
             {path: 'rxjs', component: RxjsComponent, data: { tirulo: 'Observables RxJs' } },
             {path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes del Tema' } },
             {path: 'profile', component: ProfileComponent, data: { titulo: 'Perfil de usuario' } },
+            {path: 'medico/:id', component: MedicoComponent, data: { titulo: 'Perfil de médico' } },
             // Mantenedores
             {path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Mantenedor de usuarios' } },
+            {path: 'hospitales', component: HospitalesComponent, data: { titulo: 'Mantenedor de hospitales' } },
+            {path: 'medicos', component: MedicosComponent, data: { titulo: 'Mantenedor de médicos' } },
             {path: '', redirectTo: '/dashboard', pathMatch: 'full'}
         ]
     },

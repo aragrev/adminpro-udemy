@@ -7,6 +7,8 @@ import {
   SharedService,
   SidebarService,
   UsuarioService,
+  HospitalService,
+  MedicoService,
   LoginGuardGuard,
   SubirArchivoService,
   ModalUploadService
@@ -23,6 +25,8 @@ import {
     SharedService,
     SidebarService,
     UsuarioService,
+    HospitalService,
+    MedicoService,
     LoginGuardGuard,
     SubirArchivoService,
     ModalUploadService
