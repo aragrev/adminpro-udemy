@@ -10,6 +10,7 @@ export { ModalUploadService } from '../components/modal-upload/modal-upload.serv
 // Guards
 export { LoginGuardGuard } from './guards/login-guard.guard';
 export { AdminGuard } from './guards/admin.guard';
+export { VerificaTokenGuard } from './guards/verifica-token.guard';
 
 // Subir archivos
 export { SubirArchivoService } from './subir-archivo/subir-archivo.service';

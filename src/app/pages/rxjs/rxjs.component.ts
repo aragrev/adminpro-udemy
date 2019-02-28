@@ -48,7 +48,8 @@ export class RxjsComponent implements OnInit, OnDestroy {
         //   observer.error('Auxilio!');
         // }
       }, 1000);
-    }).pipe(
+    }).pipe( 
+      // retry(2),
       map(resp => {
         return resp.valor;
       }),

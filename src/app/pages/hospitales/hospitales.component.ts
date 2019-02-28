@@ -13,7 +13,7 @@ export class HospitalesComponent implements OnInit {
   hospitales: Hospital[] = [];
   desde: number = 0;
   totalReg: number = 0;
-  cargado: boolean = true;
+  cargando: boolean = true;
 
   constructor(
     public hospitalService: HospitalService,
@@ -28,22 +28,22 @@ export class HospitalesComponent implements OnInit {
   }
 
   cargarHospitales() {
-    this.cargado = true;
+    this.cargando = true;
     this.hospitalService.cargarHospitales(this.desde)
     .subscribe((resp: any) => {
       this.hospitales = resp.hospitales;
       this.totalReg = resp.total;
-      this.cargado = false;
+      this.cargando = false;
     });
   }
 
   buscarHospitales(termino: string) {
     if (termino.length > 0) {
-      this.cargado = true;
+      this.cargando = true;
       this.hospitalService.buscarHospitales(termino)
       .subscribe((resp: any) => {
         this.hospitales = resp.hospitales;
-        this.cargado = false;
+        this.cargando = false;
       });
     } else {
       this.cargarHospitales();

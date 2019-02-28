@@ -13,7 +13,7 @@ export class UsuariosComponent implements OnInit {
   usuarios: Usuario[] = [];
   desde: number = 0;
   totalReg: number = 0;
-  cargado: boolean = true;
+  cargando: boolean = true;
 
   constructor(
     public usuarioService: UsuarioService,
@@ -28,12 +28,12 @@ export class UsuariosComponent implements OnInit {
   }
 
   cargarUsuarios() {
-    this.cargado = true;
+    this.cargando = true;
     this.usuarioService.cargarUsuarios(this.desde)
     .subscribe((resp: any) => {
       this.usuarios = resp.usuarios;
       this.totalReg = resp.total;
-      this.cargado = false;
+      this.cargando = false;
     });
   }
 
@@ -52,11 +52,11 @@ export class UsuariosComponent implements OnInit {
 
   buscarUsuario(termino: string) {
     if (termino.length > 0) {
-      this.cargado = true;
+      this.cargando = true;
       this.usuarioService.buscarUsuarios(termino)
       .subscribe((resp: any) => {
         this.usuarios = resp.usuarios;
-        this.cargado = false;
+        this.cargando = false;
       });
     } else {
       this.cargarUsuarios();

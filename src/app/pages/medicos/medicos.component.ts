@@ -13,7 +13,7 @@ export class MedicosComponent implements OnInit {
   medicos: Medico[] = [];
   desde: number = 0;
   totalReg: number = 0;
-  cargado: boolean = true;
+  cargando: boolean = true;
 
   constructor(
     public modalUploadService: ModalUploadService,
@@ -30,12 +30,12 @@ export class MedicosComponent implements OnInit {
   }
 
   cargarMedicos() {
-    this.cargado = true;
+    this.cargando = true;
     this.medicoService.cargarMedicos(this.desde)
     .subscribe((medicos: any) => {
       this.medicos = medicos;
       this.totalReg = this.medicoService.totalMedicos;
-      this.cargado = false;
+      this.cargando = false;
     });
   }
 
@@ -44,11 +44,11 @@ export class MedicosComponent implements OnInit {
       this.cargarMedicos();
       return;
     }
-    this.cargado = true;
+    this.cargando = true;
     this.medicoService.buscarMedicos(termino)
     .subscribe((medico: any) => {
       this.medicos = medico;
-      this.cargado = false;
+      this.cargando = false;
     });
   }
 
