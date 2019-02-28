@@ -1,4 +1,4 @@
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
 
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -12,9 +12,9 @@ import { MedicoComponent } from './medicos/medico.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { HospitalesComponent } from './hospitales/hospitales.component';
 import { MedicosComponent } from './medicos/medicos.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 // Service guard
-import { LoginGuardGuard } from '../services/service.index';
-
+import { LoginGuardGuard, AdminGuard } from '../services/service.index';
 
 const pagesRoutes: Routes = [
     {
@@ -30,8 +30,9 @@ const pagesRoutes: Routes = [
             {path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes del Tema' } },
             {path: 'profile', component: ProfileComponent, data: { titulo: 'Perfil de usuario' } },
             {path: 'medico/:id', component: MedicoComponent, data: { titulo: 'Perfil de médico' } },
+            {path: 'busqueda/:termino', component: BusquedaComponent, data: { titulo: 'buscador' } },
             // Mantenedores
-            {path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Mantenedor de usuarios' } },
+            {path: 'usuarios', component: UsuariosComponent, canActivate: [AdminGuard], data: { titulo: 'Mantenedor de usuarios' } },
             {path: 'hospitales', component: HospitalesComponent, data: { titulo: 'Mantenedor de hospitales' } },
             {path: 'medicos', component: MedicosComponent, data: { titulo: 'Mantenedor de médicos' } },
             {path: '', redirectTo: '/dashboard', pathMatch: 'full'}

@@ -34,6 +34,7 @@ import { ModalUploadComponent } from '../components/modal-upload/modal-upload.co
 import { AccountSettingsComponent } from '../components/account-settings/account-settings.component';
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 
 @NgModule({
     declarations: [
@@ -51,7 +52,8 @@ import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.co
         ModalUploadComponent,
         HospitalesComponent,
         MedicosComponent,
-        MedicoComponent
+        MedicoComponent,
+        BusquedaComponent
     ],
     exports: [
         PagesComponent,
